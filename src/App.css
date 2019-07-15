@@ -1,15 +1,5 @@
 
-#funky {
-  padding:3rem;
-  width:600px;
-  border:1px solid #000;
-  background-color:#eee
-}
-
-.boo {
-  padding: 1rem;
-  background: #ff0000;
-  color:#fff;
-  font-weight:bold;
-  opacity:0.4;
+#form-input {
+  margin: 3rem auto;
+  display: block;
 }

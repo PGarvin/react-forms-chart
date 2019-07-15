@@ -76,7 +76,7 @@ class EssayForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           Essay:
-          <textarea value={this.state.value} onChange={this.handleChange} />
+          <textarea id="form-input" rows="10" cols="50" value={this.state.value} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" id="funkyButton"/>
       </form>
