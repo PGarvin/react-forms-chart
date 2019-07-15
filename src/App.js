@@ -58,14 +58,23 @@ class EssayForm extends React.Component {
   }
 
   handleSubmit(event) {
-
-  let input = this.state.value;
+    let usability;
+    let input = this.state.value;
     let initialArray = makeArray(input);
     let data = cleanArray(initialArray);
     console.log(data);
     
- 
+
+    if (data.length >= 2) {
+      usability = true;
+    } else {
+      usability = false;
+    }
+    console.log(usability);
     
+    this.setState({
+      usable:usability 
+    }) 
     
     event.preventDefault();
   }
@@ -75,7 +84,7 @@ class EssayForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Essay:
+          <h1>The library is {this.state.usable ? 'open' : 'closed'}</h1>
           <textarea id="form-input" rows="10" cols="50" value={this.state.value} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" id="funkyButton"/>
