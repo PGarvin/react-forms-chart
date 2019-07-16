@@ -1,13 +1,45 @@
-
-#form-input {
-  margin: 3rem auto;
-  display: block;
+ #form-input {
+     margin: 3rem auto;
+     display: block;
 }
-
-.horizontalBarChart {width:100%; margin-bottom: 20px; display:inline-block; background:#fff;}
-
-.horizontalBarChart .row { margin-bottom:0.2rem; padding-bottom:0.2rem; border-bottom:1px dotted #eee; width:100%; float:left;}
-.horizontalBarChart .Name { padding-right: 0.5rem; width:20%; margin-bottom:0.2rem; font-family:'BentonSans', Helvetica, Arial, sans-serif; float:left; text-align:right; font-size:0.9rem;}
-.horizontalBarChart .Value { float:left; display:inline; margin-right:1.5%;}
-.horizontalBarChart .Value span { float:left; height:20px; width:100%; background:rgba(237, 236, 228, 1);}
-.horizontalBarChart .ValueNumber { margin-bottom:0.2rem; font-family:'BentonSans', Helvetica, Arial, sans-serif; float:left; font-size:0.9rem; display:inline;}
+ .horizontalBarChart {
+    width:100%;
+     margin-bottom: 20px;
+     display:inline-block;
+     background:#fff;
+}
+ .horizontalBarChart .row {
+     margin-bottom:0.2rem;
+     padding-bottom:0.2rem;
+     border-bottom:1px dotted #eee;
+     width:100%;
+     float:left;
+}
+ .horizontalBarChart .Name {
+     padding-right: 0.5rem;
+     width:20%;
+     margin-bottom:0.2rem;
+     font-family:'BentonSans', Helvetica, Arial, sans-serif;
+     float:left;
+     text-align:right;
+     font-size:0.9rem;
+}
+ .horizontalBarChart .Value {
+     float:left;
+     display:inline;
+     margin-right:1.5%;
+}
+ .horizontalBarChart .Value span {
+     float:left;
+     height:20px;
+     width:100%;
+     background:rgba(237, 236, 228, 1);
+}
+ .horizontalBarChart .ValueNumber {
+     margin-bottom:0.2rem;
+     font-family:'BentonSans', Helvetica, Arial, sans-serif;
+     float:left;
+     font-size:0.9rem;
+     display:inline;
+}
+ 
