@@ -117,26 +117,31 @@ class EssayForm extends React.Component {
     
 
     if (data.length >= 2) {
-    	largest_number = Math.max.apply(Math,valueArray);
-		unusability = false;
-    } else {
-    	unusability = true;
-  		let largest_number = '';
-    }
-    
+
     this.setState({
-      unusable:unusability,
-      largest: largest_number,
+      unusable:false,
+      largest: Math.max.apply(Math,valueArray),
       data: data
     }) 
-    
-        domtoimage.toJpeg(document.getElementById('chart'), { quality: 0.95 })
+		
+		        domtoimage.toJpeg(document.getElementById('chart'), { quality: 0.95 })
     .then(function (dataUrl) {
         var link = document.createElement('a');
         link.download = 'my-image-name.jpeg';
         link.href = dataUrl;
         link.click();
     });
+		
+    } else {
+  		
+  		    this.setState({
+      unusable:true,
+      largest: '',
+      data: data
+    }) 
+    }
+    
+
     
     event.preventDefault();
   }
