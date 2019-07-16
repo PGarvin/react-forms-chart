@@ -39,14 +39,61 @@ const cleanArray = array => {
   return finalArray;
 }
 
+const numbersWithCommas = x => {
+	var fraction;
+	if (x % 1 !== 0) {
+		x = Number(x).toFixed(2)
+	}
+    var parts = x.toString().split(".");
+
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    if (parts.length !== 1) {
+    	fraction = true;
+    	parts = parts[0]+"."+parts[1];
+    }
+    return parts;  
+}
+
+const percent = (number, largest) => {
+	return 60*number/largest;
+}
+
+const Bar = ({name, number, largest}) => {
+	return (
+		<div className="row">
+			<div className="Name">{name}</div>
+			<div className="Value" style={{width: percent(number, largest) + "%" }}><span></span></div>
+			<div className="ValueNumber">{numbersWithCommas(number)}</div>
+		</div>
+	)
+}
+
+class BarChart extends React.Component {
+	render() {
+		const { bars, largest } = this.props
+		return (
+			<div className="horizontalBarChart" id="chart">
+				{bars.map(
+					(bar, i) =>
+						<Bar 
+							key={i}
+							name={bar.Name} 
+							number={bar.Value}
+							largest={largest}/>
+				)}
+			</div>
+		)
+	}
+}
 
 class EssayForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       value: 'Please write an essay about your favorite DOM element.',
-      data: '',
-      usable: false
+      data: [],
+      unusable: false,
+      largest: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -58,17 +105,38 @@ class EssayForm extends React.Component {
   }
 
   handleSubmit(event) {
+  	let unusability;
+  	let largest_number = '';
     let input = this.state.value;
     let initialArray = makeArray(input);
     let data = cleanArray(initialArray);
-    console.log(data);
+    let valueArray = data.map(function (datum) {
+  		return Number(datum.Value);
+});
+    console.log(valueArray);
     
 
     if (data.length >= 2) {
+    	largest_number = Math.max.apply(Math,valueArray);
+		unusability = false;
+    } else {
+    	unusability = true;
+  		let largest_number = '';
+    }
+    
     this.setState({
-      usable:true 
+      unusable:unusability,
+      largest: largest_number,
+      data: data
     }) 
-    } 
+    
+        domtoimage.toJpeg(document.getElementById('chart'), { quality: 0.95 })
+    .then(function (dataUrl) {
+        var link = document.createElement('a');
+        link.download = 'my-image-name.jpeg';
+        link.href = dataUrl;
+        link.click();
+    });
     
     event.preventDefault();
   }
@@ -76,13 +144,17 @@ class EssayForm extends React.Component {
 
   render() {
     return (
+    	<div>
       <form onSubmit={this.handleSubmit}>
         <label>
-          <h1>The data is {this.state.usable ? 'usable' : 'unusable'}</h1>
+          <h1>{this.state.unusable ? 'The data is unusable' : ''}</h1>
           <textarea id="form-input" rows="10" cols="50" value={this.state.value} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" id="funkyButton"/>
       </form>
+      <div>{this.state.unusable ? '' : <BarChart bars={this.state.data} largest={this.state.largest}/>}
+      </div>
+      </div>
     );
   }
 }
