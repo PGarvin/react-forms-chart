@@ -48,18 +48,7 @@ const cleanArray = array => {
 };
 
 const numbersWithCommas = x => {
-  var fraction;
-  if (x % 1 !== 0) {
-    x = Number(x).toFixed(2);
-  }
-  var parts = x.toString().split(".");
-
-  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  if (parts.length !== 1) {
-    fraction = true;
-    parts = parts[0] + "." + parts[1];
-  }
-  return parts;
+  return x;
 };
 
 const percent = (number, largest) => {
@@ -82,16 +71,25 @@ class BarChart extends React.Component {
   render() {
     const { bars, largest } = this.props;
     return (
-      <div className="horizontalBarChart" id="chart">
-        {bars.map((bar, i) => (
-          <Bar key={i} name={bar.Name} number={bar.Value} largest={largest} />
-        ))}
+      <div className="chartHolder">
+        <div className="horizontalBarChart" id="chart">
+          {bars.map((bar, i) => (
+            <Bar key={i} name={bar.Name} number={bar.Value} largest={largest} />
+          ))}
+        </div>
       </div>
     );
   }
 }
 
-class EssayForm extends React.Component {
+class Headline extends React.Component {
+  render() {
+    const { text } = this.props;
+    return <h1>{text}</h1>;
+  }
+}
+
+class ChartHolder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -149,18 +147,35 @@ class EssayForm extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            <h1>{this.state.unusable ? "The data is unusable" : ""}</h1>
-            <textarea
-              id="form-input"
-              rows="10"
-              cols="50"
-              value={this.state.value}
-              onChange={this.handleChange}
+        <form className="form-holder" onSubmit={this.handleSubmit}>
+          <h1>{this.state.unusable ? "The data is unusable" : ""}</h1>
+          <div className="label-input">
+            <div className="label">Headline:</div>
+            <input
+              className="text-input"
+              type="input"
+              defaultValue="Headline goes here."
+              id="headline"
             />
-          </label>
-          <input type="submit" value="Submit" id="funkyButton" />
+          </div>
+          <div className="label-input">
+            <div className="label">Intro text:</div>
+            <input
+              className="text-input"
+              type="input"
+              defaultValue="This is great intro text."
+              id="headline"
+            />
+          </div>
+          <textarea
+            className="form-input"
+            rows="10"
+            cols="80"
+            defaultValue={this.state.value}
+            onChange={this.handleChange}
+          />
+
+          <input type="submit" defaultValue="Submit" id="submitButton" />
         </form>
         <div>
           {this.state.unusable ? (
@@ -177,8 +192,7 @@ class EssayForm extends React.Component {
 function App() {
   return (
     <div>
-      <EssayForm />
-      <div id="chart"></div>
+      <ChartHolder />
     </div>
   );
 }

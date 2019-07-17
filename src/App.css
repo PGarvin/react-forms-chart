@@ -1,7 +1,38 @@
- #form-input {
+.form-holder {
+	display: block;
+	width: 100%;
+	max-width: 500px;
+	margin: 2rem auto;
+}
+
+.form-input {
      margin: 3rem auto;
      display: block;
 }
+
+.label-input {
+	width: 100%;
+	margin: 1rem auto;
+	display: grid;
+}
+
+.label {
+	float:left;
+}
+
+.text-input {
+	float:left;
+}
+
+.chartHolder {
+	margin: 3rem auto;
+	width: 600px;
+}
+
+.chart {
+	width:100%;
+}
+
  .horizontalBarChart {
     width:100%;
      margin-bottom: 20px;
