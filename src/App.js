@@ -4,6 +4,7 @@ import "./App.css";
 import domtoimage from "dom-to-image";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
 const condensed = text => {
   return text.split(" ").join("");
 };
