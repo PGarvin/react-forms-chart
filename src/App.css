@@ -1,40 +1,38 @@
 .form-holder {
-	display: block;
-	width: 100%;
-	max-width: 500px;
-	margin: 2rem auto;
+     display: block;
+     width: 100%;
+     max-width: 500px;
+     margin: 2rem auto;
 }
-
-.form-input {
+ .form-input {
      margin: 3rem auto;
      display: block;
 }
-
-.label-input {
-	width: 100%;
-	margin: 1rem auto;
-	display: grid;
+ .label-input {
+     width: 100%;
+     margin: 1rem auto;
+     display: grid;
 }
-
-.label {
-	float:left;
+ .label {
+     float:left;
 }
-
-.text-input {
-	float:left;
+ .text-input {
+     float:left;
 }
-
-.chartHolder {
-	margin: 3rem auto;
-	width: 600px;
+ .packageHolder {
+     margin: auto;
+     width: 600px;
 }
-
-.chart {
-	width:100%;
+ .chartHolder {
+     width: 100%;
+     background: #fff;
 }
-
+ .chart {
+     width:100%;
+     background: #fff;
+}
  .horizontalBarChart {
-    width:100%;
+     width:100%;
      margin-bottom: 20px;
      display:inline-block;
      background:#fff;
@@ -64,7 +62,8 @@
      float:left;
      height:20px;
      width:100%;
-     background:rgba(237, 236, 228, 1);
+     background:#58889e;
+     border: 1px solid #000;
 }
  .horizontalBarChart .ValueNumber {
      margin-bottom:0.2rem;
@@ -73,4 +72,7 @@
      font-size:0.9rem;
      display:inline;
 }
- 
+ .state {
+     fill: #EEE;
+     stroke: #AAA;
+}
