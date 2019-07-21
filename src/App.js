@@ -150,7 +150,7 @@ class ChartHolder extends React.Component {
     let valueArray = data.map(function(datum) {
       return Number(datum.Value);
     });
-    //console.log(valueArray);
+
 
     if (data.length >= 2) {
       this.setState({
@@ -164,12 +164,6 @@ class ChartHolder extends React.Component {
         return data[key];
       });
 
-      console.log(
-        statesData.length,
-        statesData[0],
-        statesData[0].Name,
-        statesData[0].Value
-      );
 
       for (let i = 0; i < statesData.length; i += 1) {
         //console.log(statesData[i].Name);
@@ -235,7 +229,7 @@ class ChartHolder extends React.Component {
           </h6>
           <h6>Feel free to paste in that data to see how it works! </h6>
           <div className="label-input">
-            <div className="label">Headline:</div>
+            <div className="label">Please type your headline here.</div>
             <input
               className="text-input"
               type="input"
@@ -246,7 +240,7 @@ class ChartHolder extends React.Component {
             />
           </div>
           <div className="label-input">
-            <div className="label">Intro text:</div>
+            <div className="label">Please type your intro text here.</div>
             <input
               className="text-input"
               type="input"
@@ -256,6 +250,8 @@ class ChartHolder extends React.Component {
               onChange={this.handleIntro}
             />
           </div>
+        <div className="label">Please paste your data here.</div>
+
           <textarea
             className="form-input"
             rows="10"
